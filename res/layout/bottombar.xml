@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <LinearLayout
+        android:id="@id/linToolBar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:background="@drawable/bar_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:clickable="true"
+            android:id="@+id/imgHome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@drawable/tabbar_home_selector" />
+
+        <ImageView
+            android:clickable="true"
+            android:id="@+id/imgClassify"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@drawable/tabbar_class_selector" />
+
+        <ImageView
+            android:clickable="true"
+            android:id="@+id/imgSearch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@drawable/tabbar_search_selector" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:clickable="true"
+                android:id="@+id/imgShoppingCar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/tabbar_shop_selector" />
+
+            <TextView
+                android:id="@+id/textShopCarNum"
+                android:text="10"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/number_bg"
+                android:gravity="center"
+                android:textColor="#ffffffff"
+                android:textSize="12.0sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <ImageView
+            android:clickable="true"
+            android:id="@+id/imgMore"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@drawable/tabbar_more_selector" />
+    </LinearLayout>
+
+</merge>

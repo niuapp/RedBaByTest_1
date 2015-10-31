@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/home_backgroud" >
+
+     <include layout="@layout/topbar" />
+<TextView 
+    android:id="@+id/title_x"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="25dp"
+    android:layout_marginTop="25dp"
+    android:layout_marginRight="25dp"
+    android:layout_marginBottom="-10dp"
+    android:text="问一个问题？"
+    android:textSize="24sp"
+    android:textColor="#000000"
+    />
+  <TextView 
+      android:id="@+id/content_tv"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      android:padding="30dp"
+      android:text="sadfsadffffffffffadfsdfsadfasdfabcdefhinabcdefghiabcdefghijklnopqrstuvwabcdefghiabcdefghijklmnopqrstuvwxyz"
+      android:textColor="#88000000"
+      android:textSize="20sp"
+      
+      />
+
+</LinearLayout>

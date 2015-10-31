@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="60dp"
+    android:padding="7dp" 
+    android:minHeight="60dp"
+    android:background="@drawable/moreitem_bg_f"
+    android:layout_marginTop="5dp"
+    >
+
+    <TextView
+        android:id="@+id/moreitem_textContent"
+        android:text="限时抢购"
+        android:paddingLeft="15dp"
+        android:textColor="#ff0000"
+        android:gravity="center_vertical"
+        style="@style/style_18_A10D0B_BOLD"
+        android:textSize="22sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        />
+
+     
+     <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15.0dip"
+        android:layout_centerVertical="true"
+        android:src="@drawable/arrow" />
+
+</RelativeLayout>
