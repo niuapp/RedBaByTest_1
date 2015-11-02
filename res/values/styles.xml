@@ -12,6 +12,19 @@
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">40dp</item>
     </style>
+    <style name="red_button">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:background">@anim/button_long</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
     <style name="style_18_EBEBEB_BOLD">
         <item name="android:textSize">18.0sp</item>
         <item name="android:textStyle">bold</item>

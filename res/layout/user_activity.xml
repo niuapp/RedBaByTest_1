@@ -7,6 +7,60 @@
 
      <include layout="@layout/more_titlebar"/>
 
-  
+     <LinearLayout 
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         >
+         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="7dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:text="
+  	    用户名：这是假的\n
+  	    会员等级：假会员\n
+  	    总积分：假积分
+  	    "
+            android:textSize="15sp" />
+         <FrameLayout 
+             android:gravity="center"
+             android:layout_width="0dp"
+             android:layout_weight="1"
+             android:layout_height="match_parent"
+             >
+         <Button 
+             android:id="@+id/loginout_tv"
+             android:background="@drawable/sousuo_button"
+             android:layout_gravity="center"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:textSize="13sp"
+             android:text="退\n出\n登\n陆"
+             android:textColor="#ffffff"
+             android:textStyle="bold"
+             android:layout_marginRight="15dp"
+             android:padding="8dp"
+             android:layout_marginLeft="30dp"
+             />
+             
+         </FrameLayout>
+
+     </LinearLayout>
+  	
+  	<ListView
+        android:id="@+id/userinfo_list"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@null"
+        android:cacheColorHint="#00000000"
+        android:listSelector="@anim/shape_rounded_selectable"
+        android:layout_gravity="center"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        />
 
 </LinearLayout>

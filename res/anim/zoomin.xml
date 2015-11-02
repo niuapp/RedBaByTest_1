@@ -4,5 +4,5 @@
     <scale Android:fromXScale="2.0" android:toXScale="1.0"  
            Android:fromYScale="2.0" android:toYScale="1.0"  
            Android:pivotX="0%" android:pivotY="0%"  
-           Android:duration="@android:integer/config_longAnimTime" />  
+           Android:duration="150" />  
 </set>  

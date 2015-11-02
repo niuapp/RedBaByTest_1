@@ -21,7 +21,7 @@ public class BrandParser extends BaseParser<List<Brand>>{
 		try {
 			String sss = new JSONObject(str).getString("brand");
 			brands = JSON.parseArray(sss, Brand.class);
-			System.out.println("====================="+brands);
+			//System.out.println("====================="+brands);
 			return brands;
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block

@@ -2,11 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="60dp"
-    android:padding="7dp" 
     android:minHeight="60dp"
-    android:background="@drawable/moreitem_bg_f"
-    android:layout_marginTop="5dp"
+    android:gravity="center"
     >
+<RelativeLayout 
+     android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp" 
+    android:background="@drawable/moreitem_bg_f"
+    >
+    
 
     <TextView
         android:id="@+id/moreitem_textContent"
@@ -29,5 +34,5 @@
         android:layout_marginRight="15.0dip"
         android:layout_centerVertical="true"
         android:src="@drawable/arrow" />
-
+</RelativeLayout>
 </RelativeLayout>

@@ -23,22 +23,22 @@ public class GetDataByNet {
 		//设置数据
 		public void setData(Object data);
 	}
-	private OnSetDataListener dataListener;
+	private static OnSetDataListener dataListenerS;
 	public OnSetDataListener getDataListener() {
-		return dataListener;
+		return dataListenerS;
 	}
 	public void setDataListener(OnSetDataListener dataListener) {
-		this.dataListener = dataListener;
+		dataListenerS = dataListener;
 	}
 	//==================================
 	
-	private Context context;
-	private String url;
-	private Map<String, String> requestDataMap;
-	private BaseParser<?> jsonParser;
+	private static Context contextS;
+	private static String urlS;
+	private static Map<String, String> requestDataMapS;
+	private static BaseParser<?> jsonParserS;
 	
 	//解析后的数据
-	private Object data;
+	private static Object data;
 	
 	/**
 	 * 在外界创建 类的对象，传入context，传入解析工具，传入回调接口，传入请求 url(位置) 请求参数   
@@ -48,24 +48,23 @@ public class GetDataByNet {
 	 * @param jsonParser 解析工具
 	 * @param dataListener 回调接口
 	 */
-	public GetDataByNet(Context context,
+	public static void getDataByNet(Context context,
 			String url, Map<String, String> requestDataMap,
 			BaseParser<?> jsonParser, OnSetDataListener dataListener) {
-		super();
 		//填补数据
-		this.dataListener = dataListener;
-		this.context = context;
+		dataListenerS = dataListener;
+		contextS = context;
 		//补url
-		this.url = ConstantsRedBaby.SERVER_URL + url;
+		urlS = ConstantsRedBaby.SERVER_URL + url;
 		//补基本map数据
 		if (requestDataMap == null) {
-			this.requestDataMap = BaseParamsMapUtil.getParamsMap(context);
+			requestDataMapS = BaseParamsMapUtil.getParamsMap(context);
 		}else {
-			this.requestDataMap = requestDataMap;
-			this.requestDataMap.putAll(BaseParamsMapUtil.getParamsMap(context));
+			requestDataMapS = requestDataMap;
+			requestDataMapS.putAll(BaseParamsMapUtil.getParamsMap(context));
 		}
 		
-		this.jsonParser = jsonParser;
+		jsonParserS = jsonParser;
 		
 		//开启任务
 		ThreadPoolManager manager = ThreadPoolManager.getInstance();
@@ -74,44 +73,44 @@ public class GetDataByNet {
 	}
 
 	//handler
-	private Handler handler = new Handler(){
+	private static Handler handler = new Handler(){
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
 			case ConstantsRedBaby.NET_FAILED:
 				//网络连接失败了
-				MyToast.showToase(context, "网络连接失败了");
+				MyToast.showToase(contextS, "网络连接失败了");
 				break;
 			case ConstantsRedBaby.SUCCESS:
 				//数据获取成功了
 				//调用回调方法，设置数据
-				if (dataListener != null) {
-					dataListener.setData(data);
+				if (dataListenerS != null) {
+					dataListenerS.setData(data);
 				}
 				break;
 			case ConstantsRedBaby.FAILED:
 				//数据获取失败了
-				MyToast.showToase(context, "数据获取失败了");
+				MyToast.showToase(contextS, "数据获取失败了");
 				break;
 
 			}
 		}
 	};
 	//获取解析数据的任务
-	private class MyRunnable implements Runnable{
+	private static class MyRunnable implements Runnable{
 
 		@Override
 		public void run() {
 			//msg对象
 			Message msg = Message.obtain();
 			//判断网络
-			if (!NetUtil.hasConnectedNetwork(context)) {
+			if (!NetUtil.hasConnectedNetwork(contextS)) {
 				//没有网络
 				msg.what = ConstantsRedBaby.NET_FAILED;
 				handler.sendMessage(msg);
 				return;
 			}
 			//请求对象
-			RequestVo requestVo = new RequestVo(url, context, requestDataMap, jsonParser);
+			RequestVo requestVo = new RequestVo(urlS, contextS, requestDataMapS, jsonParserS);
 			//得到解析后的对象
 			try {
 				//得到数据

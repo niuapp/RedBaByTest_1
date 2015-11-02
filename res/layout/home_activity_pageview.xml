@@ -11,7 +11,7 @@
         android:orientation="horizontal" />
 
 
-            <include layout="@layout/serachbar"/>
+            <include layout="@layout/searchbar"/>
             
        <!-- ViewPager -->
       <FrameLayout 

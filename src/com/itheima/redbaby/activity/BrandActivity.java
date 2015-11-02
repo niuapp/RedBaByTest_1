@@ -22,6 +22,11 @@ import com.itheima.redbaby.ui.DefineBrandItem.OnDGItemClickListener;
 import com.itheima.redbaby.utils.ImageUtils2;
 import com.itheima.redbaby.utils.ImageUtils2.ImageCallback;
 
+/**
+ * 推荐品牌
+ * @author Administrator
+ *
+ */
 public class BrandActivity extends BaseActivity {
 	
 	//
@@ -39,9 +44,9 @@ public class BrandActivity extends BaseActivity {
 		//初始化控件
 		content_ll = (LinearLayout) findViewById(R.id.content_ll);
 		//请求数据
-		GetDataByNet byNet = new GetDataByNet(this, "brand", null, new BrandParser(), new GetDataByNet.OnSetDataListener() {
+		GetDataByNet.getDataByNet(this, "brand", null, new BrandParser(), new GetDataByNet.OnSetDataListener() {
 			
-			private DefineBrandItem brandItem;
+			//private DefineBrandItem brandItem;
 
 			@Override
 			public void setData(Object data) {
@@ -50,20 +55,40 @@ public class BrandActivity extends BaseActivity {
 				for (final Brand brand : brands) {
 					//
 					final List<ImageView> images = new ArrayList<ImageView>();
+					
+					//每个 brand对应一个布局
+					if (brandImageViewList == null) {
+						brandImageViewList = images;
+					}
+					final DefineBrandItem brandItem = new DefineBrandItem(BrandActivity.this, brandImageViewList, brand.getKey());
+					
+					
+					
 					for (BrandValue bv : brand.getValue()) {
 						String imageUrl = bv.getPic();
-						ImageView imageView = new ImageView(BrandActivity.this);
+						if (brandImageViewList == null) {
+							brandImageViewList = images;
+						}
 						Bitmap bitmap = ImageUtils2.loadImageDefault(BrandActivity.this, getCacheDir(), imageUrl, new ImageCallback() {
 							
 							@Override
 							public void loadImage(Bitmap bitmap, String imagePath) {
-								brandItem.update(images);
+								ImageView imageView = new ImageView(BrandActivity.this);
+								imageView.setBackground(new BitmapDrawable(bitmap ));
+								images.add(imageView);
+								if (brand.getValue().size() == images.size()) {
+//									for (int i = 0; i < content_ll.getChildCount(); i++) {
+//										brandImageViewList = images;
+//										((DefineBrandItem)content_ll.getChildAt(i)).update(brandImageViewList);
+//									}
+									brandImageViewList = images;
+									brandItem.update(brandImageViewList);
+								}
 							}
 						}, true);
-						imageView.setBackground(new BitmapDrawable(bitmap ));
-						images.add(imageView);
 					}
-					brandItem = new DefineBrandItem(BrandActivity.this, images, brand.getKey());
+					
+					
 					//点击事件
 					brandItem.setClickListener(new OnDGItemClickListener() {
 						@Override
@@ -72,6 +97,8 @@ public class BrandActivity extends BaseActivity {
 							MyToast.showThreadToase(BrandActivity.this, brand.getValue().get(position).getId()+"");
 						}
 					});
+					
+					//添加
 					content_ll.addView(brandItem);
 				}
 			}

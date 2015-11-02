@@ -49,7 +49,14 @@ public class MoreActivity extends BaseActivity {
 					int position, long id) {
 				switch (position) {
 				case 0:
-					startAndFinish(More_UserActivity.class, false);
+					//账户中心
+					//点击判断是否已经登陆(sp中保存)，没有就去登陆页面，有就直接进
+					if (sp.getBoolean("isLogin", false)) {
+						startAndFinish(More_UserActivity.class, false);
+					}else {
+						//没有登陆，去登陆页面
+						startAndFinish(LoginActivity.class, false);
+					}
 					break;
 				case 1:
 					startAndFinish(More_HistoryActivity.class, false);

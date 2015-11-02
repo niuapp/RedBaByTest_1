@@ -10,9 +10,11 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
@@ -27,6 +29,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import com.itheima.redbaby.R;
 import com.itheima.redbaby.activity.BrandActivity;
 import com.itheima.redbaby.activity.HomeActivity;
+import com.itheima.redbaby.activity.HotproducttActivity;
 import com.itheima.redbaby.activity.LimitbuyActivity;
 import com.itheima.redbaby.activity.NewproductActivity;
 import com.itheima.redbaby.activity.TopicActivity;
@@ -65,14 +68,14 @@ public class HomeFragment extends BaseFragment {
 	 */
 	private <T> void startAndFinish(Class<T> c) {
 		startActivity(new Intent(context, c));
-//		finish();
+		// finish();
 		showChangeAnim();
 	}
 
 	@Override
 	public void initData() {
 		// 请求数据，获取图片
-		GetDataByNet byNet = new GetDataByNet(getActivity(), "home", null,
+		GetDataByNet.getDataByNet(getActivity(), "home", null,
 				new HomeTitleParser(), new GetDataByNet.OnSetDataListener() {
 					private DefineViewPager defineViewPager;
 
@@ -82,6 +85,7 @@ public class HomeFragment extends BaseFragment {
 						images = new ArrayList<ImageView>();
 						// 遍历解析
 						for (HomeTitle homeTitle : temp) {
+
 							Bitmap bitmap = ImageUtils2.loadImageDefault(
 									context, context.getCacheDir(),
 									homeTitle.getPic(), new ImageCallback() {
@@ -89,32 +93,39 @@ public class HomeFragment extends BaseFragment {
 										@Override
 										public void loadImage(Bitmap bitmap,
 												String imagePath) {
+											// System.out.println("==========11111"+images);
 											ImageView image = new ImageView(
 													context);
 											image.setBackground(new BitmapDrawable(
 													bitmap));
 											images.add(image);
-											defineViewPager.update(images);
+											homeFragmentList = images;
+											defineViewPager.update(homeFragmentList);
 										}
 									}, true);
 							// Bitmap bitmap =
 							// Image_Utils.getBitmapByUrl(HomeActivity.this,
 							// homeTitle.getPic());
+							// bitmapTemps.add(bitmap);
+
 						}
-						defineViewPager = new DefineViewPager(context, images);
+						//System.out.println("==========11111" + images);
+						if (homeFragmentList == null) {
+							homeFragmentList = images;
+						}
+						defineViewPager = new DefineViewPager(context, homeFragmentList);
 						// 添加到FrameLayout
 						frameLayout_vp.removeAllViews();
 						frameLayout_vp.addView(defineViewPager);
 					}
 				});
-		
-		//设置适配器
+
+		// 设置适配器
 		listView.setAdapter(new BaseAdapter() {
 
 			@Override
 			public View getView(int position, View convertView, ViewGroup parent) {
-				View view = View.inflate(context, R.layout.home_item,
-						null);
+				View view = View.inflate(context, R.layout.home_item, null);
 				TextView tView = (TextView) view
 						.findViewById(R.id.homeitem_textContent);
 				tView.setText(listViewC[position]);
@@ -168,7 +179,7 @@ public class HomeFragment extends BaseFragment {
 					startAndFinish(NewproductActivity.class);
 					break;
 				case 3:
-					startAndFinish(TopicActivity.class);
+					startAndFinish(HotproducttActivity.class);
 					break;
 				case 4:
 					startAndFinish(BrandActivity.class);
@@ -193,14 +204,38 @@ public class HomeFragment extends BaseFragment {
 		dingGRX = (TextView) view.findViewById(R.id.orderTelTv);
 
 		// 订购热线拨打电话
-		dingGRX.setOnClickListener(new OnClickListener() {
+		dingGRX.setOnLongClickListener(new OnLongClickListener() {
+			
 			@Override
-			public void onClick(View v) {
+			public boolean onLongClick(View v) {
 				// 拨打电话，待
 				MyToast.showToase(context, "打电话");
+				return false;
 			}
 		});
 		
+		//搜索
+		serchGL();
+
 		return view;
+	}
+
+	//搜索  点击搜索判断输入框是否为空，不空就带数据到搜索结果页
+	private void serchGL() {
+		
+		serach_bt.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				String content = search_et.getText().toString().trim();
+				if (TextUtils.isEmpty(content)) {
+					MyToast.showToase(context, "空内容");//可以谈对话框
+					return;
+				}
+				Intent intent = new Intent();
+				intent.putExtra("", content);
+				// TODO ======================
+				startActivity(intent);
+			}
+		});
 	}
 }

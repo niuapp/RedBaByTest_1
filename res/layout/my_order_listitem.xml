@@ -3,7 +3,6 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="@anim/shape_rounded_rectangle"
-    android:descendantFocusability="blocksDescendants"
     android:padding="5.0dip" >
 	
     <RelativeLayout
@@ -122,14 +121,14 @@
         android:layout_marginTop="3.0dip"
         android:singleLine="true" />
 	</RelativeLayout>
-    <LinearLayout
+<!--     <LinearLayout
         android:id="@id/linLine"
         android:layout_width="fill_parent"
         android:layout_height="1.0dip"
         android:layout_below="@id/order_item_rel"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="3.0dip"
-        android:background="@drawable/line" />
+        android:background="@drawable/line" /> -->
 
     <LinearLayout
         android:id="@id/linOrderPayCancel"

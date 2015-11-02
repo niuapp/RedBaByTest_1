@@ -30,6 +30,7 @@ import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -63,11 +64,17 @@ public class HomeActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home_activity);
-		
+		getWindow().setSoftInputMode(     
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);  
 		//初始化、默认第一个选中
 		initView();
 		
 		supportFragmentManager = getSupportFragmentManager();
+		
+	}
+	@Override
+	protected void onStart() {
+		super.onStart();
 		//默认是第一页
 		supportFragmentManager.beginTransaction().replace(R.id.home_fl, new HomeFragment()).commit();
 		

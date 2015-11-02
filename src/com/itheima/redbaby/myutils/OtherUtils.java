@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class OtherUtils {
 	
@@ -30,5 +31,13 @@ public class OtherUtils {
 		// listView.getDividerHeight()获取子项间分隔符占用的高度
 		// params.height最后得到整个ListView完整显示需要的高度
 		listView.setLayoutParams(params);
+	}
+	/**
+	 * 往TextView中追加文本
+	 * @param tv 
+	 * @param str
+	 */
+	public static void addText(TextView tv, String str){
+		tv.setText(tv.getText()+str);
 	}
 }

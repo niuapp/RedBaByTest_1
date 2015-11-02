@@ -9,15 +9,18 @@ import com.itheima.redbaby.domain.Limitbuy;
 import com.itheima.redbaby.myutils.GetDataByNet;
 import com.itheima.redbaby.myutils.MyToast;
 import com.itheima.redbaby.parser.LimitbuyParser;
+import com.itheima.redbaby.ui.DefineLimitItem;
 import com.itheima.redbaby.utils.BaseParamsMapUtil;
 import com.itheima.redbaby.utils.ConstantsRedBaby;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 /**
@@ -39,16 +42,11 @@ public class LimitbuyActivity extends BaseActivity {
 		listView = (ListView) findViewById(R.id.mylimitbuy_product_list);
 		
 		//请求数据
-		GetDataByNet byNet = new GetDataByNet(this, "limitbuy", BaseParamsMapUtil.getLimitbuy("1", "10", ConstantsRedBaby.SALE_DOWN), new LimitbuyParser(), new GetDataByNet.OnSetDataListener() {
+		GetDataByNet.getDataByNet(this, "limitbuy", BaseParamsMapUtil.getLimitbuy("1", "10", ConstantsRedBaby.SALE_DOWN), new LimitbuyParser(), new GetDataByNet.OnSetDataListener() {
 			@Override
 			public void setData(Object data) {
 				limitbuys = (List<Limitbuy>) data;
-				List<String> temp = new ArrayList<String>();
-				for (Limitbuy s : limitbuys) {
-					temp.add(s.toString());
-				}
-				//设置数据
-				listView.setAdapter(new ArrayAdapter<String>(LimitbuyActivity.this, android.R.layout.simple_list_item_1, temp));
+				listView.setAdapter(new MyAdapter());
 			}
 		});
 		//点击
@@ -56,8 +54,35 @@ public class LimitbuyActivity extends BaseActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
+				//TODO ======================
 				MyToast.showToase(LimitbuyActivity.this, position+"");
 			}
 		});
+	}
+	
+	private class MyAdapter extends BaseAdapter{
+
+		@Override
+		public int getCount() {
+			return limitbuys.size();
+		}
+		@Override
+		public Object getItem(int position) {
+			return limitbuys.get(position);
+		}
+
+		@Override
+		public long getItemId(int position) {
+			return position;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			if (convertView == null) {
+				convertView = new DefineLimitItem(LimitbuyActivity.this, limitbuys.get(position));
+			}
+			return convertView;
+		}
+		
 	}
 }

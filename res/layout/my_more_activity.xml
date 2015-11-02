@@ -13,21 +13,13 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:cacheColorHint="#00000000"
+        android:divider="@null"
         android:listSelector="@anim/shape_rounded_selectable"
         />
 
     <TextView
         android:id="@+id/orderTelTv"
-        android:textSize="16sp"
-        android:textColor="#ffffff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:background="@anim/button_long"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center"
+        style="@style/red_button"
         android:text="客服电话：010-88499999" />
 
 </LinearLayout>

@@ -7,5 +7,5 @@
            Android:pivotX="0%" android:pivotY="0%"  
            Android:duration="@android:integer/config_longAnimTime" />  
     <alpha Android:fromAlpha="1.0" android:toAlpha="0"  
-            Android:duration="@android:integer/config_longAnimTime"/>  
+            Android:duration="150"/>  
 </set>   

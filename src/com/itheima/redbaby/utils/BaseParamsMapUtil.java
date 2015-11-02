@@ -3,6 +3,8 @@ package com.itheima.redbaby.utils;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.itheima.redbaby.domain.MyAddress;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
@@ -40,6 +42,42 @@ public class BaseParamsMapUtil {
 		paramsMap.put("version", version);
 		return paramsMap;
 	}
+	public static Map<String, String> getOrderId(String orderId) {
+		// Map<String, String> paramsMap = getParamsMap(context);
+		Map<String, String> paramsMap = new HashMap<String, String>();
+		paramsMap.put("orderId", orderId);
+		return paramsMap;
+	}
+	
+	public static Map<String, String> getAddressEdit(MyAddress address) {
+		Map<String, String> paramsMap = new HashMap<String, String>();
+//		name	收货人姓名	肖文
+//		phonenumber	手机号码	15801477821
+//		fixedtel	固定电话	010-88496666
+//		areaid	010305	北京市海淀区    
+//		areadetail	详情地址	闵庄路3号红孩子
+//		zipcode	邮编	100195
+		//没ID就添加
+		if (!"".equals(address.getId())) {
+			paramsMap.put("id", address.getId());
+		}
+		paramsMap.put("name", address.getName());
+		paramsMap.put("phonenumber", address.getPhonenumber());
+		paramsMap.put("fixedtel", address.getFixedtel());
+		paramsMap.put("areaid", address.getAreaid());
+		paramsMap.put("areadetail", address.getAreadetail());
+		paramsMap.put("zipcode", address.getZipcode());
+		
+		return paramsMap;
+	}
+	
+	public static Map<String, String> getRegistInfo(String username, String password) {
+		// Map<String, String> paramsMap = getParamsMap(context);
+		Map<String, String> paramsMap = new HashMap<String, String>();
+		paramsMap.put("username", username);
+		paramsMap.put("password", password);
+		return paramsMap;
+	}
 	
 	public static Map<String, String> getHelp_Detail(String id) {
 		// Map<String, String> paramsMap = getParamsMap(context);
@@ -69,6 +107,17 @@ public class BaseParamsMapUtil {
 
 		return paramsMap;
 
+	}
+	public static Map<String, String> getOrderList(String page, String pageNum,
+			String type) {
+		// Map<String, String> paramsMap = getParamsMap(context);
+		Map<String, String> paramsMap = new HashMap<String, String>();
+		paramsMap.put("page", page);
+		paramsMap.put("pageNum", pageNum);
+		paramsMap.put("type", type);
+		
+		return paramsMap;
+		
 	}
 
 	/**

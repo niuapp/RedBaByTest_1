@@ -13,10 +13,9 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:cacheColorHint="#00000000"
-        android:footerDividersEnabled="true"
-        android:headerDividersEnabled="true"
         android:listSelector="@anim/shape_rounded_selectable"
-        android:showDividers="none" />
+        android:divider="@null"
+        />
 
 
 </LinearLayout>

@@ -109,6 +109,13 @@ public class ImageUtils2 {
 	 */
 	public static Bitmap loadImageDefault(Context context,File dir, String imagePath,
 			ImageCallback callback,boolean isCompress) {
+		
+		//============= BUG
+		if (!imagePath.startsWith("http://")) {
+			imagePath = ConstantsRedBaby.SERVER_URL + imagePath;
+		}
+		
+		
 		try {
 			if(dir == null ){
 				dir=context.getCacheDir();

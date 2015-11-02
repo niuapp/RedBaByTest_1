@@ -4,29 +4,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/home_backgroud" >
 
-    <FrameLayout
-        android:id="@id/fraHead"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/head_bg" >
-
-        <TextView
-            android:id="@id/textTitle"
-            style="@style/style_18_BEBEBE_BOLD"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="订单详情" />
-
-        <TextView
-            android:id="@+id/head_back_text"
-            style="@style/style_15_EBEBEB_BOLD"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@anim/head_back"
-            android:gravity="center"
-            android:text="返 回" />
-    </FrameLayout>
+    <include layout="@layout/topbar" />
 
     <RelativeLayout
         android:id="@id/relSpace"

@@ -48,7 +48,7 @@ public class TopicActivity extends BaseActivity {
 //		tpm.addTask(new MyRunnable());
 		
 		//工具对象
-		GetDataByNet byNet = new GetDataByNet(this, "topic", BaseParamsMapUtil.getTopic("1", "8"), new TopicParser(), new OnSetDataListener() {
+		GetDataByNet.getDataByNet(this, "topic", BaseParamsMapUtil.getTopic("1", "8"), new TopicParser(), new OnSetDataListener() {
 			
 			@Override
 			public void setData(Object data) {

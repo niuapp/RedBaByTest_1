@@ -1,6 +1,6 @@
 package com.itheima.redbaby.fragment;
 
-import com.itheima.redbaby.R;
+import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,16 +9,23 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.itheima.redbaby.R;
 
 public abstract class BaseFragment extends Fragment {
 	public View view;
 	public Context context;
+	//homeFragment 的图片集合
+	public static List<ImageView> homeFragmentList;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		this.context = getActivity();
 		view = initView(inflater, container,
 				savedInstanceState);
+		
 		return view;
 	}
 	@Override

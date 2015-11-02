@@ -32,6 +32,8 @@
         	<activity android:name="com.itheima.redbaby.activity.TopicActivity" />
         	<activity android:name="com.itheima.redbaby.activity.BrandActivity" />
         	<activity android:name="com.itheima.redbaby.activity.LimitbuyActivity" />
+        	<activity android:name="com.itheima.redbaby.activity.NewproductActivity" />
+        	<activity android:name="com.itheima.redbaby.activity.HotproducttActivity" />
         <!-- 更多 -->
         <activity android:name="com.itheima.redbaby.activity.MoreActivity" />
         	<!-- 选项 -->
@@ -40,7 +42,20 @@
         		<activity android:name="com.itheima.redbaby.activity.HelpContentActivity" />
         	<activity android:name="com.itheima.redbaby.activity.More_HistoryActivity" />
         	<activity android:name="com.itheima.redbaby.activity.More_SuggestActivity" />
+        	
+        	<!-- 账户中心 -->
         	<activity android:name="com.itheima.redbaby.activity.More_UserActivity" />
+        		<!-- 登陆注册 -->
+        		<activity android:name="com.itheima.redbaby.activity.RegistActivity" />
+        		<activity android:name="com.itheima.redbaby.activity.LoginActivity" />
+        		<!-- 地址管理 -->
+        		<activity android:name="com.itheima.redbaby.activity.AddressActivity" />
+        		<activity android:name="com.itheima.redbaby.activity.AddressEditActivity" />
+        		<activity android:name="com.itheima.redbaby.activity.AddressAddActivity" />
+        		<!-- 我的订单 -->
+        		<activity android:name="com.itheima.redbaby.activity.OrderListActivity" />
+        		<activity android:name="com.itheima.redbaby.activity.OrderInfoActivity" />
+        		<activity android:name="com.itheima.redbaby.activity.OrderLogisticsActivity" />
     </application>
      <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
