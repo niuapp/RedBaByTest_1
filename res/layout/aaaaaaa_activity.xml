@@ -5,10 +5,6 @@
     android:background="@drawable/home_backgroud"
     android:orientation="vertical" >
 
-    <TextView
-        android:layout_marginBottom="20dp"
-        style="@style/text_title"
-        android:text="分类浏览" />
-	<include layout="@layout/incloud_listview_null"/>
-
+    <include layout="@layout/topbar" />
+       
 </LinearLayout>

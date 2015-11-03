@@ -1,5 +1,10 @@
 package com.itheima.redbaby.myutils;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.itheima.redbaby.domain.MyCategory;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
@@ -39,5 +44,17 @@ public class OtherUtils {
 	 */
 	public static void addText(TextView tv, String str){
 		tv.setText(tv.getText()+str);
+	}
+	/**
+	 * categories集合 转String 集合
+	 * @param categories
+	 * @return
+	 */
+	public static List<String> toStringList(List<MyCategory> categories){
+		List<String> list = new ArrayList<String>();
+		for (MyCategory myCategory : categories) {
+			list.add(myCategory.getName());
+		}
+		return list;
 	}
 }

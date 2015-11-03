@@ -1,7 +1,7 @@
 package com.itheima.redbaby.utils;
 
 public class ConstantsRedBaby {
-	public static final String SERVER_URL = "http://192.168.13.23:8080/RedBabyServer/";
+	public static final String SERVER_URL = "http://192.168.1.107:8080/RedBabyServer/";
 	/**
 	 * 联网失败
 	 */

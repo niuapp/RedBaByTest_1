@@ -1,27 +1,29 @@
 package com.itheima.redbaby.activity;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
+
 import com.itheima.redbaby.R;
+import com.itheima.redbaby.domain.FavoriteItem;
 import com.itheima.redbaby.domain.Newproduct;
 import com.itheima.redbaby.myutils.GetDataByNet;
 import com.itheima.redbaby.parser.NewproductParser;
 import com.itheima.redbaby.ui.DefineGoodsItem;
 import com.itheima.redbaby.utils.BaseParamsMapUtil;
+import com.itheima.redbaby.utils.ConstantsRedBaby;
 
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
-
-public class More_HistoryActivity extends BaseActivity {
+public class FavoriteActivity extends BaseActivity {
 	
 	private Button clean_bt;
 	private ListView listView;
@@ -31,14 +33,12 @@ public class More_HistoryActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.history_activity_co);
+		setContentView(R.layout.favorite_activity);
 		// 设置标题文本
-		((TextView) findViewById(R.id.more_title_tv)).setText("浏览历史");
+		((TextView) findViewById(R.id.textTitle)).setText("收藏夹");
 		
 		clean_bt = (Button) findViewById(R.id.bt_clean);
 		listView = (ListView) findViewById(R.id.favorite_list);
-		
-		favoriteItems = new ArrayList<Newproduct>();
 
 		GetDataByNet.getDataByNet(this, "favorites", BaseParamsMapUtil.getTopic("1", "10"), new NewproductParser(), new GetDataByNet.OnSetDataListener() {
 			@Override
@@ -60,10 +60,7 @@ public class More_HistoryActivity extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				favoriteItems.clear();
-				BaseAdapter adapter = (BaseAdapter)listView.getAdapter();
-				if (adapter != null) {
-					adapter.notifyDataSetChanged();
-				}
+				((BaseAdapter)listView.getAdapter()).notifyDataSetChanged();
 			}
 		});
 	}
@@ -89,7 +86,7 @@ public class More_HistoryActivity extends BaseActivity {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			if (convertView == null) {
-				convertView = new DefineGoodsItem(More_HistoryActivity.this, favoriteItems.get(position));
+				convertView = new DefineGoodsItem(FavoriteActivity.this, favoriteItems.get(position));
 			}
 			return convertView;
 		}

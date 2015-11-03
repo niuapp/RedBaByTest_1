@@ -14,7 +14,7 @@
     
 
     <TextView
-        android:id="@+id/moreitem_textContent"
+        android:id="@+id/coupon_textContent"
         android:text="限时抢购"
         android:paddingLeft="15dp"
         android:textColor="#ff0000"
@@ -27,11 +27,12 @@
 
      
      <ImageView
+        android:id="@+id/coupon_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginRight="15.0dip"
         android:layout_centerVertical="true"
-        android:src="@drawable/arrow" />
+        />
 </RelativeLayout>
 </RelativeLayout>

@@ -4,66 +4,62 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.itheima.redbaby.R;
+import com.itheima.redbaby.domain.Limitbuy;
 import com.itheima.redbaby.domain.Newproduct;
 import com.itheima.redbaby.myutils.GetDataByNet;
 import com.itheima.redbaby.parser.NewproductParser;
 import com.itheima.redbaby.ui.DefineGoodsItem;
 import com.itheima.redbaby.utils.BaseParamsMapUtil;
+import com.itheima.redbaby.utils.ConstantsRedBaby;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
 
-public class More_HistoryActivity extends BaseActivity {
+/**
+ * 新品上架
+ * 
+ * @author Administrator
+ * 
+ */
+public class HotproducttActivity extends BaseActivity {
 	
-	private Button clean_bt;
+	//List
 	private ListView listView;
-	//ListView数据
-	private List<Newproduct> favoriteItems;
+	//数据集合
+	private List<Newproduct> newproducts;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.history_activity_co);
+		setContentView(R.layout.my_new_activity);
 		// 设置标题文本
-		((TextView) findViewById(R.id.more_title_tv)).setText("浏览历史");
+		((TextView) findViewById(R.id.textTitle)).setText("热门单品");
+		listView = (ListView) findViewById(R.id.newproduct_list);
 		
-		clean_bt = (Button) findViewById(R.id.bt_clean);
-		listView = (ListView) findViewById(R.id.favorite_list);
-		
-		favoriteItems = new ArrayList<Newproduct>();
-
-		GetDataByNet.getDataByNet(this, "favorites", BaseParamsMapUtil.getTopic("1", "10"), new NewproductParser(), new GetDataByNet.OnSetDataListener() {
+		//获取数据
+		GetDataByNet.getDataByNet(this, "hotproduct", BaseParamsMapUtil.getLimitbuy("1", "10", ConstantsRedBaby.SALE_DOWN), new NewproductParser(), new GetDataByNet.OnSetDataListener() {
 			@Override
 			public void setData(Object data) {
-				favoriteItems = (List<Newproduct>) data;
+				newproducts = (List<Newproduct>) data;
+				
 				listView.setAdapter(new MyAdapter());
 			}
 		});
 		
+		//点击
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				//TODO ==========收藏夹==========
-			}
-		});
-		
-		clean_bt.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				favoriteItems.clear();
-				BaseAdapter adapter = (BaseAdapter)listView.getAdapter();
-				if (adapter != null) {
-					adapter.notifyDataSetChanged();
-				}
+				//TODO ================
 			}
 		});
 	}
@@ -73,12 +69,12 @@ public class More_HistoryActivity extends BaseActivity {
 
 		@Override
 		public int getCount() {
-			return favoriteItems.size();
+			return newproducts.size();
 		}
 
 		@Override
 		public Object getItem(int position) {
-			return favoriteItems.get(position);
+			return newproducts.get(position);
 		}
 
 		@Override
@@ -89,7 +85,7 @@ public class More_HistoryActivity extends BaseActivity {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			if (convertView == null) {
-				convertView = new DefineGoodsItem(More_HistoryActivity.this, favoriteItems.get(position));
+				convertView = new DefineGoodsItem(HotproducttActivity.this, newproducts.get(position));
 			}
 			return convertView;
 		}

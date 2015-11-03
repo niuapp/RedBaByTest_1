@@ -7,6 +7,7 @@ import com.itheima.redbaby.R;
 import com.itheima.redbaby.myutils.Px_DipUtils;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -21,6 +22,13 @@ public class DefineViewPager extends RelativeLayout {
 	private ViewPager vp_image;
 	private LinearLayout ll_point;
 	private int lastPointIndex;
+	
+	private Handler handler = new Handler(){
+		public void handleMessage(android.os.Message msg) {
+			vp_image.setCurrentItem((vp_image.getCurrentItem()+1)%images.size());
+			sendEmptyMessageDelayed(0, 1500L);
+		}
+	};
 	
 	//选择页面的回调
 	public interface OnSelectPagerListener{
@@ -78,6 +86,8 @@ public class DefineViewPager extends RelativeLayout {
         }else{
         	myPageAdapter.notifyDataSetChanged();
         }
+        //发送滚动消息
+        handler.sendEmptyMessageDelayed(0, 1500L);
         
       //给ViewPager设置改变监听
         vp_image.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -157,7 +167,9 @@ public class DefineViewPager extends RelativeLayout {
 		}
 		@Override
 		public Object instantiateItem(ViewGroup container, int position) {
-			ImageView imageView = images.get(position);
+			//TODO ==========BUG==============
+			ImageView imageView = new ImageView(context);
+			imageView.setImageDrawable(images.get(position).getBackground());
 			container.addView(imageView);
 			return imageView;
 		}

@@ -47,7 +47,7 @@ import android.widget.TextView;
  * 
  * @author Administrator
  */
-public class HomeActivity extends FragmentActivity {
+public class HomeActivity extends BaseActivity {
 	
 	private FragmentManager supportFragmentManager;
 	//下边的5个按钮
@@ -70,13 +70,13 @@ public class HomeActivity extends FragmentActivity {
 		initView();
 		
 		supportFragmentManager = getSupportFragmentManager();
+		//默认是第一页
+		supportFragmentManager.beginTransaction().replace(R.id.home_fl, new HomeFragment()).commit();
 		
 	}
 	@Override
 	protected void onStart() {
 		super.onStart();
-		//默认是第一页
-		supportFragmentManager.beginTransaction().replace(R.id.home_fl, new HomeFragment()).commit();
 		
 	}
 	private static List<View> views = new ArrayList<View>();

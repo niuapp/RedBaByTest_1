@@ -7,6 +7,6 @@
 
      <include layout="@layout/more_titlebar"/>
 
-  
+  <include layout="@layout/incloud_listview_null"/>
 
 </LinearLayout>

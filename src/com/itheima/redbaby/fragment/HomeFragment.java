@@ -234,7 +234,7 @@ public class HomeFragment extends BaseFragment {
 				Intent intent = new Intent();
 				intent.putExtra("", content);
 				// TODO ======================
-				startActivity(intent);
+				//startActivity(intent);
 			}
 		});
 	}

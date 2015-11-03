@@ -59,6 +59,7 @@ public class NewproductActivity extends BaseActivity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				//TODO =====================
+//				startAndFinish(商品详情, true)
 			}
 		});
 	}

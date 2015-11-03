@@ -34,6 +34,9 @@
         	<activity android:name="com.itheima.redbaby.activity.LimitbuyActivity" />
         	<activity android:name="com.itheima.redbaby.activity.NewproductActivity" />
         	<activity android:name="com.itheima.redbaby.activity.HotproducttActivity" />
+        <!-- 分类 -->
+        <activity android:name="com.itheima.redbaby.activity.ClassActivity_2" />
+        <activity android:name="com.itheima.redbaby.activity.ClassActivity_3" />
         <!-- 更多 -->
         <activity android:name="com.itheima.redbaby.activity.MoreActivity" />
         	<!-- 选项 -->
@@ -56,6 +59,10 @@
         		<activity android:name="com.itheima.redbaby.activity.OrderListActivity" />
         		<activity android:name="com.itheima.redbaby.activity.OrderInfoActivity" />
         		<activity android:name="com.itheima.redbaby.activity.OrderLogisticsActivity" />
+        		<!-- 收藏夹 -->
+        		<activity android:name="com.itheima.redbaby.activity.FavoriteActivity" />
+        		<!-- 优惠券 -->
+        		<activity android:name="com.itheima.redbaby.activity.CouponActivity" />
     </application>
      <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

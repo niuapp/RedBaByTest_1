@@ -83,9 +83,11 @@ public class More_UserActivity extends BaseActivity {
 					break;
 				case 2:
 					//优惠
+					startAndFinish(CouponActivity.class, false);
 					break;
 				case 3:
 					//收藏夹
+					startAndFinish(FavoriteActivity.class, false);
 					break;
 
 				default:

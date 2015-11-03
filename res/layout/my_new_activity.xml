@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/home_backgroud"
+    android:orientation="vertical" >
+
+    <include layout="@layout/topbar" />
+    <include layout="@layout/sortbar"/>
+
+    <ListView
+        android:id="@+id/newproduct_list"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:cacheColorHint="#00000000"
+        android:listSelector="@anim/shape_rounded_selectable"
+        android:divider="@null"
+        />
+
+
+</LinearLayout>

@@ -6,17 +6,19 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.itheima.redbaby.R;
 import com.itheima.redbaby.domain.MyAddress;
+import com.itheima.redbaby.domain.MyCategory;
 /**
  * 基本Activity
  * @author Administrator
  *
  */
-public class BaseActivity extends Activity {
+public class BaseActivity extends FragmentActivity {
 	
 	//brand的图片存储集合
 	protected static List<ImageView> brandImageViewList;
@@ -24,6 +26,10 @@ public class BaseActivity extends Activity {
 	
 	//地址管理条目集合
 	protected static List<MyAddress> BA_addressList;
+	
+	//二 三级分类集合
+	public static List<MyCategory> BA_categories_2;
+	public static List<MyCategory> BA_categories_3;
 	
 	//sp
 	protected SharedPreferences sp;

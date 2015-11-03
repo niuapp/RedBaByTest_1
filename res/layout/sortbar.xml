@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 待 -->
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+  <LinearLayout
+        android:id="@id/fraHead"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        >
+
+        <Button
+            android:id="@+id/bt_1"
+            style="@style/style_15_EBEBEB_BOLD"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_selector"
+            android:gravity="center"
+            android:text="返回" 
+            />
+        <Button
+            android:id="@+id/bt_2"
+            style="@style/style_15_EBEBEB_BOLD"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_selector"
+            android:gravity="center"
+            android:text="返回" 
+            />
+        <Button
+            android:id="@+id/bt_3"
+            style="@style/style_15_EBEBEB_BOLD"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_selector"
+            android:gravity="center"
+            android:text="返回" 
+            />
+        <Button
+            android:id="@+id/bt_4"
+            style="@style/style_15_EBEBEB_BOLD"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_selector"
+            android:gravity="center"
+            android:text="返回" 
+            />
+
+        
+    </LinearLayout>
+
+</merge>
